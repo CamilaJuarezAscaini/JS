@@ -41,24 +41,15 @@ function comprar() {
     const plantaEncontrada = plantas.find((elem) => elem.id === seleccionaPlanta)
     carrito.push(plantaEncontrada)
 
-    let cantidadDePlantas = prompt("Cuantas unidades queres llevar?");
+    let cantidadDePlantas = parseInt(prompt("Cuantas unidades queres llevar?"));
         if (cantidadDePlantas <= 0 || cantidadDePlantas === null) {
             alert("Opción inválida. Intente de nuevo.");
         }
         else {
-        carrito.cantComprada = cantidadDePlantas;
+        plantaEncontrada.cantComprada = cantidadDePlantas;
         }
 };
 
-
-
-function continuar() {
-    let seguir;
-    do {
-        comprar();
-        seguir = prompt("Desea seguir comprando? si/no")
-    } while (seguir === "si");
-}
 
 // VER CARRITO
 
@@ -72,13 +63,23 @@ function verCarrito() {
 
 function finalizarCompra() {
     verCarrito()
-    let precio = carrito.map((el) => el.precio);
+    let precio = carrito.map((el) => el.precio * el.cantComprada);
     const total = precio.reduce((acumulador, elemento) => acumulador + elemento, 0);
     alert("El total de tu compra es: $" + total);
 }
 
+
+// PONER EL INDEXOF DE CADA ELEMENTO
 function eliminarPlanta() {
+    let borrarProducto = carrito.map((elemento) => "\n" + elemento.id + ". " + elemento.cantComprada + " " + elemento.nombre + " -  $" + (elemento.precio * elemento.cantComprada))
+
+    let plantaEliminada = parseInt(prompt ("Elimina una planta" + borrarProducto))
+    const eliminada = borrarProducto.find((elem) => elem.id === plantaEliminada)
+    carrito.splice ((eliminada -1),1)
+
 }
+
+
 
 // FUNCTION GENERAL
 
@@ -86,7 +87,6 @@ function selection() {
     const seleccion = prompt("Qué operación desea realizar?" + listaOperaciones);
     if (seleccion === "a") {
         comprar()
-        continuar()
         selection()
     }
 
