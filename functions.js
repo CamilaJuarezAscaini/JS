@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         baseDeDatos.forEach((item) => {
             const card = `
               <div class="card">
-                <img src="${item.imageUrl}" alt="${item.nombre}">
+                <img src="./assets/img/${item.imageUrl}" alt="${item.nombre}">
                 <div class="card-body"> 
                    <h5 class="card-title">${item.nombre}</h5>
                    <p class="card-text"> ${divisa} ${item.precio}</p>
@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
               `;
-              DOMitems.innerHTML += card;
-              let btnAgregar = document.getElementById('btnAgregar')
-              btnAgregar.setAttribute('marcador', item.id);
-              btnAgregar.addEventListener('click', agregarProductos);
+            DOMitems.innerHTML += card;
+            let btnAgregar = document.getElementById('btnAgregar')
+            btnAgregar.setAttribute('marcador', item.id);
+            btnAgregar.addEventListener('click', agregarProductos);
         });
     }
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 0);
             const miNodo = document.createElement('li');
             miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-            miNodo.textContent = `${ numeroUnidadesItem } x ${ miItem[0].nombre } - ${ miItem[0].precio }${ divisa } `;
+            miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa} `;
             const miBoton = document.createElement('button');
             miBoton.classList.add('btn', 'btn-danger', 'position-absolute', 'top-0', 'start-100');
             miBoton.textContent = 'X';

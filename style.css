@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+* {
+  font-family: Itim;
+}
+
+body {
+  background-image: url(../assets/img/mifondo.png);
+  overflow: auto;
+}
+
+h1 {
+  color: rgb(37, 100, 118);
+  text-align: center;
+  font-size: 35px;
+}
+
+h2{
+  color: rgb(73, 92, 97);
+  text-align: center;
+}
+
+#posiCarrito{
+  position: fixed;
+  right: 10%;
+}
